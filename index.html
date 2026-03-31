@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>北海道深度游 · 美瑛 & 富良野 5日行程</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --lavender: #7B68AE;
+  --lavender-light: #E8E0F0;
+  --lavender-pale: #F5F1FA;
+  --green: #4A7C59;
+  --green-light: #E8F3EC;
+  --gold: #C4983A;
+  --gold-light: #FFF8E7;
+  --blue: #4A7A9B;
+  --blue-light: #E6F0F6;
+  --rose: #B85C6E;
+  --rose-light: #FCE8EC;
+  --text: #2C2C2C;
+  --text-muted: #6B6B6B;
+  --bg: #FAFAF8;
+  --card: #FFFFFF;
+  --border: #E8E6E2;
+  --bike: #E67E22;
+  --bike-light: #FDF2E9;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.header {
+  background: linear-gradient(135deg, #7B68AE 0%, #5B4A8E 50%, #4A3A7E 100%);
+  color: white;
+  padding: 48px 24px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.08) 0%, transparent 60%);
+}
+.header h1 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  position: relative;
+}
+.header .subtitle {
+  font-size: 14px;
+  opacity: 0.85;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+.header .flight-info {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  font-size: 12px;
+  opacity: 0.8;
+}
+.header .flight-info span {
+  background: rgba(255,255,255,0.15);
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.day-section {
+  margin: 32px 0;
+}
+
+.day-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 16px 20px;
+  background: var(--card);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.day-badge {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+.day-header h2 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 18px;
+  font-weight: 600;
+  flex: 1;
+}
+.day-header .stay-tag {
+  font-size: 11px;
+  color: var(--text-muted);
+  background: var(--lavender-pale);
+  padding: 3px 10px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.day1 .day-badge { background: var(--lavender-light); color: var(--lavender); }
+.day2 .day-badge { background: var(--green-light); color: var(--green); }
+.day3 .day-badge { background: var(--blue-light); color: var(--blue); }
+.day4 .day-badge { background: var(--gold-light); color: var(--gold); }
+.day5 .day-badge { background: var(--rose-light); color: var(--rose); }
+
+.timeline {
+  position: relative;
+  padding-left: 32px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--border);
+}
+
+.event {
+  position: relative;
+  margin-bottom: 6px;
+  padding: 14px 18px;
+  background: var(--card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  transition: box-shadow 0.2s;
+}
+.event:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+.event::before {
+  content: '';
+  position: absolute;
+  left: -25px;
+  top: 20px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+  border: 2px solid var(--bg);
+}
+
+.event.highlight::before { background: var(--lavender); }
+.event.food::before { background: var(--gold); }
+.event.bike::before { background: var(--bike); }
+.event.transport::before { background: var(--blue); }
+
+.event-time {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+.event-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.event-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+.event-desc strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 10px;
+  vertical-align: middle;
+}
+.tag-food { background: var(--gold-light); color: var(--gold); }
+.tag-view { background: var(--green-light); color: var(--green); }
+.tag-bike { background: var(--bike-light); color: var(--bike); }
+.tag-exp { background: var(--lavender-light); color: var(--lavender); }
+.tag-tip { background: var(--rose-light); color: var(--rose); }
+.tag-transport { background: var(--blue-light); color: var(--blue); }
+
+.tip-box {
+  margin: 8px 0 12px 32px;
+  padding: 12px 16px;
+  background: var(--gold-light);
+  border-radius: 10px;
+  font-size: 12px;
+  color: var(--gold);
+  border-left: 3px solid var(--gold);
+}
+.tip-box.bike-tip {
+  background: var(--bike-light);
+  color: #8B4513;
+  border-left-color: var(--bike);
+}
+
+.section-divider {
+  text-align: center;
+  margin: 16px 0;
+  padding-left: 32px;
+}
+.section-divider span {
+  font-size: 11px;
+  color: var(--text-muted);
+  background: var(--bg);
+  padding: 0 12px;
+  position: relative;
+}
+
+.cost-note {
+  margin: 20px 0 0 32px;
+  padding: 12px 16px;
+  background: var(--lavender-pale);
+  border-radius: 10px;
+  font-size: 12px;
+  color: var(--lavender);
+}
+
+.footer {
+  text-align: center;
+  padding: 40px 24px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.bike-banner {
+  margin: 0 0 12px 32px;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, #FDF2E9, #FDEBD0);
+  border-radius: 12px;
+  border: 1px solid #F0C27B;
+  font-size: 13px;
+  color: #8B4513;
+}
+.bike-banner strong {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>北海道深度游 · 美瑛 & 富良野</h1>
+  <div class="subtitle">6人包车 · 小时级行程规划 · 2025年6月17日–21日</div>
+  <div class="flight-info">
+    <span>✈ 去程 6/17 MU279 PVG 08:00→CTS 12:30</span>
+    <span>✈ 返程 6/21 MU280 CTS 13:30→PVG 16:50</span>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ==================== DAY 1 ==================== -->
+<div class="day-section day1">
+  <div class="day-header">
+    <span class="day-badge">DAY 1</span>
+    <h2>6月17日（三）抵达 → 美瑛</h2>
+    <span class="stay-tag">🏨 美瑛温泉旅馆</span>
+  </div>
+  <div class="timeline">
+    <div class="event transport">
+      <div class="event-time">12:30</div>
+      <div class="event-title">新千岁机场 · 落地取行李 <span class="tag tag-transport">交通</span></div>
+      <div class="event-desc">入境手续约1小时，约13:30出关。包车司机在出口等候，提前确认司机联系方式和接机牌名字。</div>
+    </div>
+    <div class="event transport">
+      <div class="event-time">14:00</div>
+      <div class="event-title">包车出发 → 美瑛（约1.5h）<span class="tag tag-transport">交通</span></div>
+      <div class="event-desc">沿道东自动车道北上，沿途可见北海道田野风光。司机可根据需求途中短暂停车。</div>
+    </div>
+    <div class="event highlight">
+      <div class="event-time">15:30</div>
+      <div class="event-title">新荣之丘展望公园 · 黄昏 <span class="tag tag-view">景点</span></div>
+      <div class="event-desc">抵达美瑛后直奔展望台。360°全景拼布大地，6月麦田翠绿。夕阳打在丘陵上层次极美。停留约30-40分钟。</div>
+    </div>
+    <div class="event highlight">
+      <div class="event-time">16:15</div>
+      <div class="event-title">拼布之路 · 亲子之树 · 七星树 <span class="tag tag-view">景点</span></div>
+      <div class="event-desc">包车慢穿越丘陵，逐一停靠标志性风景树。傍晚光线是最佳拍照时段。Ken&Mary之树、Seven Star之树等。停留约45分钟。</div>
+    </div>
+    <div class="event food">
+      <div class="event-time">17:30</div>
+      <div class="event-title">入住温泉旅馆 + 晚餐 <span class="tag tag-food">美食</span></div>
+      <div class="event-desc">入住白金温泉区旅馆。泡个露天温泉消解旅途疲劳。晚餐可选旅馆的一泊二食，或去美瑛町内餐厅。<br><strong>推荐：</strong>若选外食 → <strong>じゅんぺい（纯平）</strong>，招牌炸虾定食，营业到20:00。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== DAY 2 ==================== -->
+<div class="day-section day2">
+  <div class="day-header">
+    <span class="day-badge">DAY 2</span>
+    <h2>6月18日（四）美瑛深度游</h2>
+    <span class="stay-tag">🏨 ザワザワ村</span>
+  </div>
+
+  <div class="bike-banner">
+    <strong>🚲 今日上午：电动自行车骑行（约3.5小时）</strong>
+    美瑛站前松浦商店或寺島商会租车，电动自行车600円/小时。6人同时租车请尽早到店（建议9:00前）。<br>
+    包车司机上午休息，下午再汇合。
+  </div>
+
+  <div class="timeline">
+    <div class="event highlight">
+      <div class="event-time">05:30</div>
+      <div class="event-title">早起！晨雾时分 · 超广角之路 <span class="tag tag-view">景点</span></div>
+      <div class="event-desc">6月美瑛日出约4点，5-7点晨雾最美。包车司机早起配合，开到丘陵高处拍晨雾。拍完回旅馆休息/早餐。<br><strong>⚠ 摄影人必拍！不爱拍照可跳过此项，多睡一会。</strong></div>
+    </div>
+    <div class="event food">
+      <div class="event-time">08:00</div>
+      <div class="event-title">旅馆早餐 <span class="tag tag-food">美食</span></div>
+      <div class="event-desc">享用旅馆早餐后退房，行李先放车上。</div>
+    </div>
+
+    <div class="section-divider"><span>—— 🚲 骑行开始 ——</span></div>
+
+    <div class="event bike">
+      <div class="event-time">09:00</div>
+      <div class="event-title">美瑛站前 · 租电动自行车 <span class="tag tag-bike">骑行</span></div>
+      <div class="event-desc">推荐<strong>松浦商店</strong>（美瑛站左手边），电动自行车600円/h，5h以上3000円/人。老爷爷会给手绘骑行地图，标注坡度和景点。<br><strong>6人请提前到！旺季电动车很抢手。</strong></div>
+    </div>
+    <div class="event bike">
+      <div class="event-time">09:15 - 10:30</div>
+      <div class="event-title">拼布之路骑行（精华段）<span class="tag tag-bike">骑行</span></div>
+      <div class="event-desc">
+        路线：美瑛站 → <strong>亚斗梦之丘（ぜるぶの丘）</strong> → <strong>Ken&Mary之树</strong> → <strong>Seven Star之树</strong> → <strong>北西之丘展望公园</strong><br>
+        全程约8km，骑行约40分钟（不含停留拍照）。丘陵起伏但有电动助力很轻松。路宽车少，安心骑行。
+      </div>
+    </div>
+    <div class="event bike">
+      <div class="event-time">10:30 - 10:50</div>
+      <div class="event-title">北西之丘展望台休息 <span class="tag tag-view">景点</span></div>
+      <div class="event-desc">白色三角形展望台，8月向日葵盛开（6月是翠绿麦田）。旁边有饮料自动贩卖机，补充水分。</div>
+    </div>
+    <div class="event bike">
+      <div class="event-time">10:50 - 12:00</div>
+      <div class="event-title">超广角之路骑行（精华段）<span class="tag tag-bike">骑行</span></div>
+      <div class="event-desc">
+        路线：返回美瑛站 → 往南骑 → <strong>三爱之丘展望公园</strong> → <strong>新荣之丘</strong>方向（量力而行，坡度更大）<br>
+        视野极开阔，丘陵绵延到十胜岳连峰。注意超广角之路坡度更陡，量力折返。
+      </div>
+    </div>
+
+    <div class="tip-box bike-tip">
+      🚲 <strong>骑行贴士：</strong>美瑛丘陵地带手机信号不稳定，建议带纸质地图。防晒帽+水壶必备。禁止骑入农田！轮胎可能带杂菌影响农作物。租车店约16:30-17:00关门，注意时间。
+    </div>
+
+    <div class="event food">
+      <div class="event-time">12:00</div>
+      <div class="event-title">还车 + 午餐 · 美瑛站周边 <span class="tag tag-food">美食</span></div>
+      <div class="event-desc">
+        还车后在美瑛站周边午餐，选择丰富：<br>
+        • <strong>Restaurant Asperges（アスペルジュ）</strong>— 米其林一星法餐，午餐性价比高，美瑛布丁绝赞。需预约！站步行15分钟<br>
+        • <strong>ビブレ（Bi.ble）</strong>— 法式小馆，人气很高<br>
+        • <strong>だいまる（大丸）</strong>— 家庭餐厅，美瑛炸猪排咖喱乌冬面是招牌<br>
+        • <strong>歩人（Hohjin）</strong>— 德式香肠面包小屋
+      </div>
+    </div>
+
+    <div class="section-divider"><span>—— 🚗 下午包车汇合 ——</span></div>
+
+    <div class="event highlight">
+      <div class="event-time">14:00</div>
+      <div class="event-title">美瑛青池 <span class="tag tag-view">景点</span></div>
+      <div class="event-desc">Apple壁纸取景地，钴蓝色温泉水配枯木。从美瑛站开车约25分钟。停留约30分钟。停车费¥500。</div>
+    </div>
+    <div class="event highlight">
+      <div class="event-time">14:45</div>
+      <div class="event-title">白胡子瀑布（白ひげの滝）<span class="tag tag-view">景点</span></div>
+      <div class="event-desc">青池旁的隐秘景点，蓝色温泉水从岩石涌出。步行桥上拍照绝佳，步行5分钟。</div>
+    </div>
+    <div class="event highlight">
+      <div class="event-time">15:30</div>
+      <div class="event-title">四季彩之丘 <span class="tag tag-view">景点</span></div>
+      <div class="event-desc">7公顷七彩花田+十胜岳连峰背景。6月花正开（薰衣草还不到最盛，但有鲁冰花/罂粟等）。可坐拖拉机巴士绕园（约¥500）。稻草娃娃合影。停留约45-60分钟。</div>
+    </div>
+    <div class="event transport">
+      <div class="event-time">16:45</div>
+      <div class="event-title">包车前往ザワザワ村 <span class="tag tag-transport">交通</span></div>
+      <div class="event-desc">入住ザワザワ村（スプウン谷のザワザワ村）。Check-in 15:00起，先行李后游览。童话风格小木屋，今晚的重头戏。</div>
+    </div>
+    <div class="event">
+      <div class="event-time">17:30</div>
+      <div class="event-title">民宿周边散步 · 黄昏拍照 <span class="tag tag-view">景点</span></div>
+      <div class="event-desc">ザワザワ村位于丘陵中，周围就是美瑛田园。傍晚在民宿周边散步拍照是最佳体验。</div>
+    </div>
+    <div class="event food">
+      <div class="event-time">19:00</div>
+      <div class="event-title">晚餐 <span class="tag tag-food">美食</span></div>
+      <div class="event-desc">ザワザワ村周边选项有限，建议提前和民宿确认是否提供晚餐，或让司机送去美瑛町内用餐。</div>
+    </div>
+  </div>
+  <div class="cost-note">
+    💰 今日骑行费用估算：电动自行车×6人×3小时 ≈ ¥10,800（约540元人民币）
+  </div>
+</div>
+
+<!-- ==================== DAY 3 ==================== -->
+<div class="day-section day3">
+  <div class="day-header">
+    <span class="day-badge">DAY 3</span>
+    <h2>6月19日（五）美瑛尾声 → 富良野</h2>
+    <span class="stay-tag">🏨 富良野温泉旅馆</span>
+  </div>
+  <div class="timeline">
+    <div class="event food">
+      <div class="event-time">07:30</div>
+      <div class="event-title">ザワザワ村早餐 · 享受清晨 <span class="tag tag-food">美食</span></div>
+      <div class="event-desc">民宿早餐在童话木屋里吃，看窗外的美瑛晨光。这是ザワザワ村住宿的精华——不要急着走。</div>
+    </div>
+    <div class="event highlight">
+      <div class="event-time">09:30</div>
+      <div class="event-title">Check-out · 最后看一眼美瑛 <span class="tag tag-view">景点</span></div>
+      <div class="event-desc">退房后可顺路去<strong>北西之丘展望台</strong>或<strong>金字塔瞭望台</strong>，俯瞰美瑛全景和嵩田远景。最后确认美瑛全景点打卡完毕。</div>
+    </div>
+    <div class="event food">
+      <div class="event-time">10:30</div>
+      <div class="event-title">美瑛选果 · 伴手礼 + 咖啡 <span class="tag tag-food">美食</span></div>
+      <div class="event-desc">美瑛选果是当地农产品精选店，旁边就是Restaurant Asperges。买点美瑛产牛奶、果酱等伴手礼。有咖啡角可以坐一会。</div>
+    </div>
+    <div class="event transport">
+      <div class="event-time">11:30</div>
+      <div class="event-title">包车前往富良野（约40分钟）<span class="tag tag-transport">交通</span></div>
+      <div class="event-desc">沿国道237南下，途经上富良野。司机可在深山峠短暂停车拍照+眺望远峰。</div>
+    </div>
+    <div class="event highlight">
+      <div class="event-time">12:30</div>
+      <div class="event-title">富田农场（Farm Tomita）<span class="tag tag-view">景点</span></div>
+      <div class="event-desc">日本最著名的花田农场，7月薰衣草满开。6月中下旬早开薰衣草+罂粟/鲁冰花已开。彩色花田+十胜岳背景绝美。免费入园，纪念品店可以买薰衣草精油、香皂。<br><strong>必吃：</strong>薰衣草冰淇淋（紫色！）、薰衣草蜜瓜。停留约60-90分钟。</div>
+    </div>
+    <div class="event food">
+      <div class="event-time">14:00</div>
+      <div class="event-title">午餐 · 富田农场周边或中富良野 <span class="tag tag-food">美食</span></div>
+      <div class="event-desc">
+        农场内有简餐（咖喱、可乐饼等），也可以开车10分钟去：<br>
+        • <strong>富川製麺所</strong>— 米其林推荐拉面，味噌烟熏叉烧拉面招牌<br>
+        周三定休，注意确认！
+      </div>
+    </div>
+    <div class="event highlight">
+      <div class="event-time">15:00</div>
+      <div class="event-title">彩香之里 + 北星山 <span class="tag tag-view">景点</span></div>
+      <div class="event-desc">彩香之里可以体验薰衣草采摘（¥700/kg）。乘观光缆车上北星山，山顶同时可以看薰衣草花田、盆地和十胜岳三重景观。缆车约¥800往返。</div>
+    </div>
+    <div class="event transport">
+      <div class="event-time">16:30</div>
+      <div class="event-title">入住 · 富良野温泉旅馆 <span class="tag tag-transport">交通</span></div>
+      <div class="event-desc">推荐<strong>富良野宾馆（Furano Biru）</strong>或富良野野营地附近温泉旅馆。均有温泉浴场。</div>
+    </div>
+    <div class="event food">
+      <div class="event-time">18:00</div>
+      <div class="event-title">晚餐 · 成吉思汗烤肉 <span class="tag tag-food">美食</span></div>
+      <div class="event-desc">
+        北海道经典的成吉思汗羊肉烧烤！推荐选择：<br>
+        • <strong>まんぐう</strong>— 富良野最有人气的烧肉店，和牛牛小排+成吉思汗羊肉，平板点餐有英文。<strong>一定要提前预约！</strong><br>
+        • <strong>くまげら（KUMAGERA）</strong>— 乡土料理居酒屋老铺，招牌起司豆腐、鹿肉料理。团体可包厢。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== DAY 4 ==================== -->
+<div class="day-section day4">
+  <div class="day-header">
+    <span class="day-badge">DAY 4</span>
+    <h2>6月20日（六）富良野深度游</h2>
+    <span class="stay-tag">🏨 富良野旅馆</span>
+  </div>
+  <div class="timeline">
+    <div class="event highlight">
+      <div class="event-time">08:30</div>
+      <div class="event-title">日出公园薰衣草园 <span class="tag tag-view">景点</span></div>
+      <div class="event-desc">丘陵顶部的薰衣草园，标志性白色爱之钟。视野开阔，上午光线最美。适合拍照。停留约30-40分钟。</div>
+    </div>
+    <div class="event highlight">
+      <div class="event-time">09:30</div>
+      <div class="event-title">富良野起司工房 + 体验制作 <span class="tag tag-exp">体验</span></div>
+      <div class="event-desc">
+        参观奶酪制作过程，试吃各种奶酪和冰淇淋。<br>
+        <strong>体验推荐：</strong>亲手制作黄油或冰淇淋体验（约40分钟，需提前预约）。富良野限定白色奶酪冰淇淋必吃！<br>
+        停留约60-90分钟。
+      </div>
+    </div>
+    <div class="event food">
+      <div class="event-time">11:00</div>
+      <div class="event-title">富良野葡萄酒工厂 <span class="tag tag-food">美食</span><span class="tag tag-exp">体验</span></div>
+      <div class="event-desc">参观葡萄酒酿造过程，免费试饮多款富良野葡萄酒。限定酒款可以买做伴手礼。展望台可以看到整个富良野盆地。停留约30-40分钟。</div>
+    </div>
+    <div class="event food">
+      <div class="event-time">12:00</div>
+      <div class="event-title">午餐 · 富良野名物 <span class="tag tag-food">美食</span></div>
+      <div class="event-desc">
+        富良野午餐精选：<br>
+        • <strong>唯我独尊</strong>— 富良野咖喱蛋包饭的代名词！30种香料手调咖喱+自制烟熏香肠。白饭没吃完喊"ルールルルー"可免费续咖喱酱。周六11:00开门，建议早到避免排队<br>
+        • <strong>カレーのふらのや（咖喱的富良野屋）</strong>— 当地人最爱的汤咖喱专门店，鸡腿汤咖喱是人气No.1
+      </div>
+    </div>
+    <div class="event highlight">
+      <div class="event-time">13:30</div>
+      <div class="event-title">六花亭 Campana della Vigna <span class="tag tag-food">美食</span><span class="tag tag-view">景点</span></div>
+      <div class="event-desc">
+        可以眺望大雪山连峰的甜品咖啡厅，2.4万坪葡萄田间的玻璃建筑。<br>
+        <strong>必点：</strong>富良野饼、季节限定甜点、Fromage Blanc（白乳酪甜点）。别忘了买伴手礼——兰姆葡萄奶油夹心饼干。<br>
+        停留约40-50分钟。
+      </div>
+    </div>
+    <div class="event highlight">
+      <div class="event-time">14:30</div>
+      <div class="event-title">Canpana六花亭旁 · 富良野展望台 <span class="tag tag-view">景点</span></div>
+      <div class="event-desc">就在六花亭旁边，一块高地可以俯瞰整个富良野盆地。配一杯牛乳或雪糕享受片刻时光。</div>
+    </div>
+    <div class="event highlight">
+      <div class="event-time">15:30</div>
+      <div class="event-title">森林精灵露台（ニングルテラス）<span class="tag tag-exp">体验</span></div>
+      <div class="event-desc">
+        新富良野王子饭店旁的童话森林购物区。15栋小木屋散布森林中，售卖手工木雕、玻璃、皮革等工艺品。<br>
+        <strong>灯笼灯在18:20点亮，建议安排在这个时段！</strong>适合拍照和买纪念品。<br>
+        停留约60-90分钟。
+      </div>
+    </div>
+    <div class="event food">
+      <div class="event-time">16:30</div>
+      <div class="event-title">森之时计咖啡馆（森の時計）<span class="tag tag-food">美食</span></div>
+      <div class="event-desc">
+        日剧《温柔时光》取景地，就在精灵露台旁边。<strong>一定要坐吧台位</strong>——自己磨咖啡豆，再交由师傅手冲咖啡。森林环绕的宁静空间，旅途中最治愈的下午茶时光。<br>
+        还有蛋糕和炖菜。停留约40分钟。
+      </div>
+    </div>
+    <div class="event food">
+      <div class="event-time">18:30</div>
+      <div class="event-title">晚餐 · 最后的富良野之夜 <span class="tag tag-food">美食</span></div>
+      <div class="event-desc">
+        推荐选择：<br>
+        • <strong>炉ばた（Robata）</strong>— 富良野�的居酒屋，复古ㄇ字型吧台，炉火煮温清酒，有英文菜单<br>
+        • <strong>支那虎</strong>— 富良野拉面名店，招牌支那そば和焦盐拉面<br>
+        • <strong>迴転寿司トピカル（Topical）</strong>— 当地人推荐的回转寿司，性价比高
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-time">20:00</div>
+      <div class="event-title">温泉 · 旅馆 <span class="tag tag-exp">体验</span></div>
+      <div class="event-desc">全程最后一个完整的夜晚，好好泡个温泉，享用旅馆设施。明天还要逛路走。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== DAY 5 ==================== -->
+<div class="day-section day5">
+  <div class="day-header">
+    <span class="day-badge">DAY 5</span>
+    <h2>6月21日（日）返程日</h2>
+    <span class="stay-tag">⚠ 13:30 CTS出发</span>
+  </div>
+
+  <div class="tip-box">
+    ⏰ <strong>时间提醒：</strong>航班13:30起飞，需提前3小时到达（10:30前到机场）。富良野到新千岁约2小时车程，建议最晚8:00出发。如果想中途停札幌，需7:00出发。
+  </div>
+
+  <div class="timeline">
+    <div class="event food">
+      <div class="event-time">07:00</div>
+      <div class="event-title">早餐 · 退房 <span class="tag tag-food">美食</span></div>
+      <div class="event-desc">旅馆早餐后退房，行李上车。</div>
+    </div>
+    <div class="event transport">
+      <div class="event-time">07:30</div>
+      <div class="event-title">包车出发 → 新千岁（约2h）<span class="tag tag-transport">交通</span></div>
+      <div class="event-desc">如果不停札幌，8:00出发即可，9:30-10:00到机场。</div>
+    </div>
+    <div class="event">
+      <div class="event-time">08:30</div>
+      <div class="event-title">【可选】中途 · 札幌快速扫货（约1h）<span class="tag tag-exp">体验</span></div>
+      <div class="event-desc">
+        如果时间允许可在札幌短暂停留：<br>
+        • <strong>大丸百货B1</strong>— 快速买伴手礼<br>
+        • <strong>ROYCE生巧工坊</strong>— 六花亭以外的北海道伴手礼首选<br>
+        • <strong>狸小路商店街</strong>— 快速逛一圈<br>
+        <strong>⚠ 需确认时间是否够用！不够就直奔机场。</strong>
+      </div>
+    </div>
+    <div class="event transport">
+      <div class="event-time">10:00</div>
+      <div class="event-title">抵达新千岁机场 <span class="tag tag-transport">交通</span></div>
+      <div class="event-desc">
+        新千岁机场本身就是个大商场！即使不去札幌，机场也能买到一切伴手礼。<br>
+        • 国内线航站楼3F：<strong>ROYCE、六花亭、LeTAO、白色恋人</strong>等全部齐全<br>
+        • 在机场拍照打卡北海道最后一面<br>
+        • 建议留足时间安检和免税购物
+      </div>
+    </div>
+    <div class="event food">
+      <div class="event-time">10:30</div>
+      <div class="event-title">机场午餐 · 还可吃！<span class="tag tag-food">美食</span></div>
+      <div class="event-desc">
+        新千岁机场美食区很赞：<br>
+        • <strong>北海道拉面道场</strong>— 多家拉面名店入驻<br>
+        • <strong>松尾成吉思汗</strong>— 最后吃一顿羊肉<br>
+        • 最后别忘了买冰淇淋吃
+      </div>
+    </div>
+    <div class="event transport">
+      <div class="event-time">13:30</div>
+      <div class="event-title">东航MU280 · 新千岁 → 上海浦东 <span class="tag tag-transport">交通</span></div>
+      <div class="event-desc">约4小时20分，16:50抵达浦东。完美旅程 ✦</div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  <p style="font-family: 'Noto Serif SC', serif; font-size: 14px; margin-bottom: 8px;">北海道 · 美瑛 & 富良野 · 2025夏</p>
+  <p>6人包车深度游 · 行程规划仅供参考，请根据实际情况灵活调整</p>
+  <p style="margin-top: 8px;">📌 待补充：小红书推荐的店铺信息（请发送店名后更新行程）</p>
+</div>
+
+</body>
+</html>
